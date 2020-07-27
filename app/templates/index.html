@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title> Home </title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name='viewport' content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+
+	</head>
+	<body>
+		<header class="conteiner-fluid sticky-top" style="width: 100%;">
+			<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			  <a class="navbar-brand disabled" href="{{url_for('CV.home')}}" style="padding: 0 10px; margin-top: -5px;">FastCurriculo</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav mr-auto">
+			      <li class="nav-item">
+			        <a class="nav-link" href="{{url_for('CV.temas')}}">Temas</a>
+			      </li>
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Campos
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id='menu'>
+			          <a class="dropdown-item" onclick='select_text("Dados Pessoais")' href="#t1">Dados Pessoais</a>
+			          <a class="dropdown-item" onclick='select_text("Formação Academica")' href="#t2">Formação Academica</a>
+			          <a class="dropdown-item" onclick='select_text("Experiência Profissional")' href="#t3">Experiência Profissional</a>
+			          <a class="dropdown-item" onclick='select_text("Projetos Desenvolvidos")' href="#t4">Projetos Desenvolvidos</a>
+			          <a class="dropdown-item" onclick='select_text("Habilidades")' href="#t5">Habilidades</a>
+			        </div>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#">Download</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>		
+		</header>
+		
+		<div id='conteudo'>
+			<form class="conteiner"  method="POST" action="{{url_for('API.create')}}">
+				<div class="row" data-spy='scroll' data-target='#menu' data-offset='0'>
+					<div id='t1' class="col-md-6 offset-md-3 col-inside" style="padding-top: 60px;"> 	
+						<div class="conteiner">
+							<div class="row">
+								<span id='t1'></span>
+								<h3> DADOS PESSOAIS </h3> 
+								<div class="col-md-12 side_left">
+									<hr width="100%;">
+								</div>
+								<div class="col-md-6 col-sm-12">	
+								<label> Nome </label> 
+								<input placeholder="Antonio da Silva" class="form-control" type="text" name="dasdsad">
+								</div>
+
+								<div class="col-md-6 col-sm-12">
+								<label> Telefone </label>
+								<input placeholder="(xx) x xxxx-xxxx" class="form-control" type="text" name="dasda">
+								</div>
+
+								<div class="col-md-6 col-sm-12">
+								<label> Email </label>
+								<input placeholder='Example@email.com' class="form-control" type="text" name="">
+								</div>
+
+								<div class="col-md-6 col-sm-12">
+								<label> Cidade-Estado </label>
+								<input placeholder="Cidade-RJ" class="form-control" type="text" name="">
+								</div>
+
+								<div class="col-md-6 col-sm-12">
+								<label> Github </label>
+								<input placeholder="www.github/example" class="form-control" type="url" name="">
+								</div>
+
+								<div class="col-md-6 col-sm-12">
+								<label> Linkedin </label>
+								<input placeholder="www.linkedin/in/example" class="form-control" type="url" name="">
+								</div>
+	
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 offset-md-3 col-config col-inside" id='t2'>  	
+						<div class="conteiner">
+							<div class="row">
+								<h3> FORMAÇÃO ACADÊMICA </h3>
+								<div id="formacao">
+									<div class="tamanho" id='formacao1'>
+										<div class="col-md-12 side_left">
+											<hr width="100%;">
+										</div>
+										<div class="col-md-6 col-sm-1 side_left">	
+											<label> Instituição </label>
+											<input placeholder="EEM Escola Estadual do Ceará" class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">
+											<label> Curso </label>
+											<input placeholder="Sistemas de Informação" class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-4 col-sm-12 side_left">	
+											<label> Cidade </label>
+											<input placeholder='Example-RJ/Remoto' class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-4 col-sm-12 side_left">
+											<label> Ano </label>
+											<input placeholder='Concluído em 2020' class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-4 col-sm-12 side_left">
+											<label> Hora-Aulas </label>
+											<input placeholder='20' class="form-control" type="number" name="">
+										</div>
+									</div>
+								</div>
+								<div class="tamanho">
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='add_formacao()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Formação </button>
+									</div>
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='del_formacao()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Formação </button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id='t3' class="col-md-6 offset-md-3 col-config col-inside"> 
+						<div class="conteiner">
+							<div class="row">
+								
+								<h3> EXPERIÊNCIA PROFISSIONAL </h3>
+								<div id='experiencia'>
+									<div class="col-md-12 side_left">
+										<hr width="100%;">
+									</div>
+									<div class="tamanho" id='experiencia1'>
+										<div class="col-md-6 col-sm-12 side_left">	
+											<label> Empresa </label>
+											<input placeholder="Comércio dois irmãos" class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">
+											<label> Cargo </label>
+											<input placeholder="Caixa" class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12  side_left">
+											<label> Entrada </label>
+											<input placeholder='janeiro/2020' class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">
+											<label> Saida </label>
+											<input placeholder='julho/2020' class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-12 col-sm-12 side_left">
+											<label> Resumo </label>
+											<textarea class="form-control"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="tamanho">
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='add_experiencia()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Experiencia </button>
+									</div>
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='del_experiencia()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Experiencia </button>
+									</div>
+								</div>						
+							</div>
+						</div>
+					</div>
+
+					<div id='t4' class="col-md-6 offset-md-3 col-config col-inside"> 	
+						<div class="conteiner">
+							<div class="row">
+								<h3> PROJETOS DESENVOLVIDOS </h3> 
+								<div id='projetos' class="tamanho">
+									<div class="tamanho" id='projetos1'>
+										<div class="col-md-12 side_left">
+											<hr width="100%;">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">									
+											<label> Titulo </label>
+											<input placeholder='FastCurriculo' class="form-control" placeholder='Titulo do projeto' type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">						
+											<label> Tecnologias </label>
+											<input placeholder='Flask, Python-Docx' class="form-control" placeholder='Tecnologias usadas' type="text" name="">
+										</div>
+										<div class="col-md-12 col-sm-12">
+											<label> Link </label>
+											<input placeholder="https://github.com/oopaze/CVGenerator-API" class="form-control" placeholder='Link do projeto(Github/Site)' type="url" name="">
+										</div>
+										<div class="col-md-12 col-sm-12">	
+											<label> Resumo </label>
+											<textarea class="form-control" placeholder='Breve Resumo sobre o projeto'>  </textarea>
+										</div>
+									</div>
+								</div>
+								<div class="tamanho">
+									<div class="col-md-6 col-sm-12 button-add">
+										<button type='button' onclick='add_projetos()' class="btn btn-form btn-outline-dark"> Adicionar Outro Projeto </button>
+									</div>
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='del_projetos()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultimo Projeto </button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id='t5' class="col-md-6 offset-md-3 col-config col-inside"> 
+						<div class="conteiner">
+							<div class="row">
+								
+								<h3> HABILIDADES </h3>
+								<div id='habilidades' class="tamanho">
+									<div class="tamanho" id='habilidades1'>
+										<div class="col-md-12 side_left">
+											<hr width="100%;">
+										</div>
+										<div class="col-md-6  col-sm-12 side_left">
+											<label> Tecnologia </label>
+											<input placeholder="Inglês" class="form-control" type="text" name="">
+										</div>
+										<div class="col-md-6 col-sm-12 side_left">
+											<label> Nível </label>
+											<input placeholder="Avançado" class="form-control" type="text" name="">
+										</div>
+									</div>
+								</div>
+								<div class="tamanho">
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='add_habilidades()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Habilidade </button>
+									</div>	
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='del_habilidades()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Habilidade </button>
+									</div>
+								</div>					
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 offset-md-3 col-config col-inside" style="padding-bottom: 30px;"> 
+						<button class="btn btn-dark" type='submit' style="width: 100%;"> Gerar Curriculo </button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<footer class="conteiner-fluid">
+			<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			  <p style="width: 100%; text-align: center; padding-top: 15px;"> Todos os direitos reservados. </p>
+			</nav>
+		</footer>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<script src="{{ url_for('static', filename='js/index.js')}}"></script>
+
+			
+	</body>
+</html>
