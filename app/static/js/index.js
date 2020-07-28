@@ -14,6 +14,7 @@ var a = 1
 var a_tamanho = 0
 
 function add_formacao(){
+	
 	f += 1
 	var formacao = ` 					
 									<div class="tamanho" id='formacao`+f+`'>
