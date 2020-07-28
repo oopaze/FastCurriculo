@@ -17,3 +17,4 @@ from app.controllers import url
 
 app.register_blueprint(url.bp_curriculo) 
 app.register_blueprint(url.bp_front)
+

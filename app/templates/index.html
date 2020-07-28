@@ -59,9 +59,13 @@
 					          </button>
 				          </form>
 				      {% endif %}
+			        
 			        </div>
 			      </li>
 			    </ul>
+				  <form class="form-inline my-2 my-lg-0">
+					<p class="my-2 my-sm-0 lead meddium">Faça seu curriculo vc mesmo!</p>
+		    	  </form>
 			  </div>
 			</nav>		
 		</header>
@@ -69,6 +73,7 @@
 		<div id='conteudo'>
 			<form class="conteiner"  method="POST" action="{{url_for('API.create')}}" id='Curriculo'>
 				<div class="row" data-spy='scroll' data-target='#menu' data-offset='0'>
+					
 					<div id='t1' class="col-md-6 offset-md-3 col-inside" style="padding-top: 60px;"> 	
 						<div class="conteiner">
 							<div class="row">
@@ -143,10 +148,10 @@
 									</div>
 								</div>
 								<div class="tamanho">
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='add_formacao()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Formação </button>
 									</div>
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_formacao()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Formação </button>
 									</div>
 								</div>
@@ -187,10 +192,10 @@
 									</div>
 								</div>
 								<div class="tamanho">
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='add_experiencia()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Experiencia </button>
 									</div>
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_experiencia()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Experiencia </button>
 									</div>
 								</div>						
@@ -226,10 +231,10 @@
 									</div>
 								</div>
 								<div class="tamanho">
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button type='button' onclick='add_projetos()' class="btn btn-form btn-outline-dark"> Adicionar Outro Projeto </button>
 									</div>
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_projetos()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultimo Projeto </button>
 									</div>
 								</div>
@@ -258,10 +263,10 @@
 									</div>
 								</div>
 								<div class="tamanho">
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='add_habilidades()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Outra Habilidade </button>
 									</div>	
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_habilidades()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Habilidade </button>
 									</div>
 								</div>					
@@ -287,10 +292,10 @@
 									</div>
 								</div>
 								<div class="tamanho">
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='add_area()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Area de Interesse </button>
 									</div>	
-									<div class="col-md-6 col-sm-12 button-add side_left">
+									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_area()' type='button' class="btn btn-form btn-outline-danger"> Excluir Area de Interesse </button>
 									</div>
 								</div>					

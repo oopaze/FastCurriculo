@@ -67,6 +67,7 @@ footer p{
 }
 
 .button-add{
+	flex: left;
 	padding-top: 10px;
 }
 
