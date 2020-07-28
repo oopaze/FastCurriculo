@@ -3,8 +3,8 @@ from flask import (Blueprint, redirect, render_template,
 from json import loads
 from app.controllers.estilos import Padrao
 from app.controllers.create import CVWritter
-from app.controllers import classifier
-import os
+from app.controllers import classifier, forms
+import os, requests, json
 
 bp_curriculo = Blueprint('API', __name__)
 bp_front = Blueprint('CV', __name__)
@@ -44,6 +44,23 @@ def create():
 
 	return redirect(url_for('CV.temas'))
 
+@bp_curriculo.route('/secret/<name>/<password>', methods=['GET', 'POST'])
+def secret(name, password):
+	if name.lower() == 'josepedro' and password == '123':
+		meucurriculo = json.loads(forms.meuCV())
+
+		global path
+		global filename
+		
+		Pedro = CVWritter(meucurriculo, path)
+		Pedro.createCV()
+		file = Pedro.save()
+
+		path = '/'.join(file.split('/')[:-1]) 
+		filename = file.split('/')[-1]
+
+	return redirect(url_for('CV.temas'))
+
 @bp_curriculo.route('/theme/<theme>', methods=['GET', 'POST'])
 def theme(theme):
 	global filename
@@ -51,7 +68,7 @@ def theme(theme):
 		curriculo = Padrao(filename, path)
 		curriculo.aplicar()
 		filename = curriculo.save()
-	
+		
 	return redirect(url_for('CV.home', pronto=1))
 
 

@@ -16,6 +16,58 @@ def fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteress
 		'projetos': projetos_
 	}
 	return fields
+class formacao:
+	def __init__(self, instituicao=None, cidade=None, curso=None, ano=None, horas=None):
+		self.instituicao = instituicao
+		self.cidade = cidade
+		self.curso = curso
+		self.ano = ano
+		self.horas = horas
+
+class emprego:
+	def __init__(self, empresa=None, cargo=None, entrada=None, saida=None, resumo=None):
+		self.empresa = empresa
+		self.cargo = cargo
+		self.entrada = entrada
+		self.saida = saida
+		self.resumo = resumo
+
+class habilidades:
+	def __init__(self, tecnologia, nivel):
+		self.tecnologia = tecnologia
+		self.nivel = nivel
+
+class projetos:
+	def __init__(self, nome, tecnologias, resumo, link):
+		self.nome = nome
+		self.tecnologias = tecnologias
+		self.resumo = resumo
+		self.link = link
+
+class pessoais:
+	def __init__(self, nome=None, telefone=None, email=None, cidade_estado=None, github=None, linkedin=None):
+		self.nome = nome
+		self.telefone = telefone
+		self.email = email
+		self.cidade_estado = cidade_estado
+		self.github = github 
+		self.linkedin = linkedin
+
+def fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteresse_):
+	fields = {
+		'area de interesse': areaInteresse_,
+		
+		'pessoais': pessoais_,
+
+		'formacao': formacao_,
+
+		'empregos': emprego_,
+
+		'habilidades': habilidades_,
+
+		'projetos': projetos_
+	}
+	return fields
 
 
 def meuCV():
@@ -33,10 +85,14 @@ def meuCV():
 						  'Um site que te possibilita guardar livros tal como um repositório',
 						  'https://github.com/oopaze/Booker').__dict__,
 				'2': projetos('CVCreate',
-							  'Json, Python-Docx',
+							  'Json, Python-Docx, Git',
 							  'Um algoritmo que gera seu curriculo automaticamente',
 							  'https://github.com/oopaze/CVCreate').__dict__,
-				'3': projetos('Sua Compra',
+				'3': projetos('FastCurriculo-API',
+							  'Flask, Json, Python-Docx, Git, Heroku',
+							  'Uma API que usa o CVCreate para gerar Curriculos a partir do preenchimento de um form',
+							  'https://github.com/oopaze/FastCurriculo-API').__dict__, 
+				'4': projetos('Sua Compra',
 							  'Tkinter, SQLite, Socket',
 							  'Um sistema de agenciamento de pequenos supermercados',
 							  'https://github.com/oopaze/Sua-Compra').__dict__}
@@ -47,9 +103,7 @@ def meuCV():
 					 '4': habilidades('SQLAlchemy', 'Avançado').__dict__,
 					 '5': habilidades('Flask', 'Avançado').__dict__}
 
-	areaInteresse_ = {"1":"Desenvolvimento Web", "2":"Desenvolvimento Back-End"}
+	areaInteresse_ = {"1":"Desenvolvedor Web Back-End"}
 
-
-	return fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteresse_)
-
-jsonfields = json.dumps(meuCV(), ensure_ascii=False)
+	data = fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteresse_) 
+	return json.dumps(data, ensure_ascii=False)
