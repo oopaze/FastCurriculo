@@ -1,0 +1,13 @@
+body{
+	width: 100%;
+}
+
+footer a{
+	padding: 4px 5px;
+}
+
+footer p{
+	height: 15px;
+	margin-top: -15px;
+	font-size: 12px;
+}

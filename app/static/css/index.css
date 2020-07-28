@@ -63,3 +63,13 @@ form h3{
 hr{
 	background-color: #005385 !important;
 }
+
+footer a{
+	padding: 4px 5px;
+}
+
+footer p{
+	height: 15px;
+	margin-top: -15px;
+	font-size: 12px;
+}
