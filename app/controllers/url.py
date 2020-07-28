@@ -34,7 +34,7 @@ def create():
 
 		Pedro = CVWritter(data, path)
 		Pedro.createCV()
-		file = Pedro.save()
+		file = Pedro.save(generate_filename())
 
 		path = '/'.join(file.split('/')[:-1]) 
 		filename = file.split('/')[-1]
@@ -70,6 +70,12 @@ def theme(theme):
 		filename = curriculo.save()
 		
 	return redirect(url_for('CV.home', pronto=1))
+
+def generate_filename():
+	files = os.listdir('app/static/Files')
+	filename = f'curriculo_{round(len(files)/2)}'
+
+	return filename
 
 
 

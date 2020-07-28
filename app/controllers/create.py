@@ -82,15 +82,14 @@ class CVWritter():
 				str_projetos += f"Resumo: {self.data_using[x]['resumo']}\nLink: {self.data_using[x]['link']}\n\n"
 			self.CVmodel.paragraphs[self.__find_index('PROJETOS')].text = str_projetos[:-2]
 
-	def save(self):
-		try:
+	def save(self, filename=None):
+		if not filename:
 			filename = f"{self.path}/Model-{self.data['pessoais']['nome']}.docx"
-			self.CVmodel.save(filename)
+		else:
+			filename = f"{self.path}/Model-{filename}.docx"
+			
+		self.CVmodel.save(filename)
 		
-		except Exception as e:
-			filename = f"Files/Model-{self.data['pessoais']['nome']}.docx"
-			self.CVmodel.save(filename)
-
 		return filename
 
 	def __find_index(self, key):
