@@ -1,41 +1,5 @@
 import json
 
-class formacao:
-	def __init__(self, instituicao, cidade, curso, ano, horas=None):
-		self.instituicao = instituicao
-		self.cidade = cidade
-		self.curso = curso
-		self.ano = ano
-		self.horas = horas
-
-class emprego:
-	def __init__(self, empresa, cargo, entrada, saida, resumo):
-		self.empresa = empresa
-		self.cargo = cargo
-		self.entrada = entrada
-		self.saida = saida
-		self.resumo = resumo
-
-class habilidades:
-	def __init__(self, tecnologia, nivel):
-		self.tecnologia = tecnologia
-		self.nivel = nivel
-
-class projetos:
-	def __init__(self, nome, tecnologias, resumo, link):
-		self.nome = nome
-		self.tecnologias = tecnologias
-		self.resumo = resumo
-		self.link = link
-
-class pessoais:
-	def __init__(self, nome, telefone, email, cidade_estado, github, linkedin):
-		self.nome = nome
-		self.telefone = telefone
-		self.email = email
-		self.cidade_estado = cidade_estado
-		self.github = github 
-		self.linkedin = linkedin
 
 def fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteresse_):
 	fields = {

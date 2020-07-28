@@ -4,6 +4,10 @@ body{
 	background-size: 100%;	
 }
 
+input:invalid {
+  border: 1px line red;
+}
+
 #conteudo{
 	background-color: rgba(11,11,11,0.8);
 }
@@ -35,6 +39,11 @@ form h3{
 
 .side_left{
 	float: left;
+	clear: top;
+}
+
+.side_left label{
+	padding-top: 10px !important;
 }
 
 .button-add{

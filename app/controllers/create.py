@@ -5,7 +5,7 @@ class CVWritter():
 	def __init__(self, data, path=None):
 		self.path =  path
 		self.data = data
-		self.CVmodel = Document('static/Model/modelo.docx')
+		self.CVmodel = Document('app/static/Model/modelo.docx')
 		
 
 	def createCV(self):

@@ -36,10 +36,30 @@
 			          <a class="dropdown-item" onclick='select_text("Experiência Profissional")' href="#t3">Experiência Profissional</a>
 			          <a class="dropdown-item" onclick='select_text("Projetos Desenvolvidos")' href="#t4">Projetos Desenvolvidos</a>
 			          <a class="dropdown-item" onclick='select_text("Habilidades")' href="#t5">Habilidades</a>
+			          <a class="dropdown-item" onclick='select_text("Area de Interesse")' href="#t6">Area de Interesse</a>
 			        </div>
 			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" href="#">Download</a>
+
+				  <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          Downloads
+			        </a>
+			        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id='menu'>
+			          <form method="get" action="{{url_for('static', filename='Files/Model-Example.docx')}}">
+			          	<button class="dropdown-item" type="submit">Modelo Exemplo</button>
+			          </form>
+			          <form method='get' action="{{url_for('static', filename='Files/CV-Example.docx')}}">
+				          <button class="dropdown-item" type="submit">Curriculo Exemplo
+				          </button>
+			          </form>
+			          {% if pronto %}
+				          <form method='get' action="{{url_for('static', filename='Files')}}/{{filename}}">
+				          	  <meta http-equiv="refresh" content="1; URL='{{url_for('static', filename='Files')}}/{{filename}}'"/>
+					          <button class="dropdown-item" type="submit">Seu Curriculo
+					          </button>
+				          </form>
+				      {% endif %}
+			        </div>
 			      </li>
 			    </ul>
 			  </div>
@@ -47,7 +67,7 @@
 		</header>
 		
 		<div id='conteudo'>
-			<form class="conteiner"  method="POST" action="{{url_for('API.create')}}">
+			<form class="conteiner"  method="POST" action="{{url_for('API.create')}}" id='Curriculo'>
 				<div class="row" data-spy='scroll' data-target='#menu' data-offset='0'>
 					<div id='t1' class="col-md-6 offset-md-3 col-inside" style="padding-top: 60px;"> 	
 						<div class="conteiner">
@@ -59,32 +79,32 @@
 								</div>
 								<div class="col-md-6 col-sm-12">	
 								<label> Nome </label> 
-								<input placeholder="Antonio da Silva" class="form-control" type="text" name="dasdsad">
+								<input placeholder="Antonio da Silva" class="form-control" type="text" name="nome">
 								</div>
 
 								<div class="col-md-6 col-sm-12">
 								<label> Telefone </label>
-								<input placeholder="(xx) x xxxx-xxxx" class="form-control" type="text" name="dasda">
+								<input placeholder="(xx) x xxxx-xxxx" class="form-control" type="text" name="telefone">
 								</div>
 
 								<div class="col-md-6 col-sm-12">
 								<label> Email </label>
-								<input placeholder='Example@email.com' class="form-control" type="text" name="">
+								<input placeholder='Example@email.com' class="form-control" type="text" name="email">
 								</div>
 
 								<div class="col-md-6 col-sm-12">
 								<label> Cidade-Estado </label>
-								<input placeholder="Cidade-RJ" class="form-control" type="text" name="">
+								<input placeholder="Cidade-RJ" class="form-control" type="text" name="Cidade">
 								</div>
 
 								<div class="col-md-6 col-sm-12">
 								<label> Github </label>
-								<input placeholder="www.github/example" class="form-control" type="url" name="">
+								<input placeholder="www.github/example" class="form-control" type="url" name="Git">
 								</div>
 
 								<div class="col-md-6 col-sm-12">
 								<label> Linkedin </label>
-								<input placeholder="www.linkedin/in/example" class="form-control" type="url" name="">
+								<input placeholder="www.linkedin/in/example" class="form-control" type="url" name="Linkedin">
 								</div>
 	
 							</div>
@@ -102,23 +122,23 @@
 										</div>
 										<div class="col-md-6 col-sm-1 side_left">	
 											<label> Instituição </label>
-											<input placeholder="EEM Escola Estadual do Ceará" class="form-control" type="text" name="">
+											<input placeholder="EEM Escola Estadual do Ceará" class="form-control" type="text" name="instituicao1">
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">
 											<label> Curso </label>
-											<input placeholder="Sistemas de Informação" class="form-control" type="text" name="">
+											<input placeholder="Sistemas de Informação" class="form-control" type="text" name="curso1">
 										</div>
 										<div class="col-md-4 col-sm-12 side_left">	
 											<label> Cidade </label>
-											<input placeholder='Example-RJ/Remoto' class="form-control" type="text" name="">
+											<input placeholder='Example-RJ/Remoto' class="form-control" type="text" name="cidade1">
 										</div>
 										<div class="col-md-4 col-sm-12 side_left">
 											<label> Ano </label>
-											<input placeholder='Concluído em 2020' class="form-control" type="text" name="">
+											<input placeholder='Concluído em 2020' class="form-control" type="text" name="ano1">
 										</div>
 										<div class="col-md-4 col-sm-12 side_left">
 											<label> Hora-Aulas </label>
-											<input placeholder='20' class="form-control" type="number" name="">
+											<input placeholder='20' class="form-control" type="number" name="horas1">
 										</div>
 									</div>
 								</div>
@@ -140,29 +160,29 @@
 								
 								<h3> EXPERIÊNCIA PROFISSIONAL </h3>
 								<div id='experiencia'>
-									<div class="col-md-12 side_left">
-										<hr width="100%;">
-									</div>
 									<div class="tamanho" id='experiencia1'>
+										<div class="col-md-12 side_left">
+											<hr width="100%;">
+										</div>
 										<div class="col-md-6 col-sm-12 side_left">	
 											<label> Empresa </label>
-											<input placeholder="Comércio dois irmãos" class="form-control" type="text" name="">
+											<input placeholder="Comércio dois irmãos" class="form-control" type="text" name="empresa1">
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">
 											<label> Cargo </label>
-											<input placeholder="Caixa" class="form-control" type="text" name="">
+											<input placeholder="Caixa" class="form-control" type="text" name="cargo1">
 										</div>
 										<div class="col-md-6 col-sm-12  side_left">
 											<label> Entrada </label>
-											<input placeholder='janeiro/2020' class="form-control" type="text" name="">
+											<input placeholder='janeiro/2020' class="form-control" type="text" name="entrada1">
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">
 											<label> Saida </label>
-											<input placeholder='julho/2020' class="form-control" type="text" name="">
+											<input placeholder='julho/2020' class="form-control" type="text" name="saida1">
 										</div>
 										<div class="col-md-12 col-sm-12 side_left">
-											<label> Resumo </label>
-											<textarea class="form-control"></textarea>
+											<label> Funções </label>
+											<textarea form='Curriculo' class="form-control" name='funcoes1'></textarea>
 										</div>
 									</div>
 								</div>
@@ -189,19 +209,19 @@
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">									
 											<label> Titulo </label>
-											<input placeholder='FastCurriculo' class="form-control" placeholder='Titulo do projeto' type="text" name="">
+											<input placeholder="FastCurriculo" class="form-control" type="text" name="titulo1">
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">						
 											<label> Tecnologias </label>
-											<input placeholder='Flask, Python-Docx' class="form-control" placeholder='Tecnologias usadas' type="text" name="">
+											<input placeholder='Flask, Python-Docx' class="form-control" type="text" name="tecnologias1">
 										</div>
 										<div class="col-md-12 col-sm-12">
 											<label> Link </label>
-											<input placeholder="https://github.com/oopaze/CVGenerator-API" class="form-control" placeholder='Link do projeto(Github/Site)' type="url" name="">
+											<input placeholder="https://github.com/oopaze/CVGenerator-API" class="form-control" placeholder='Link do projeto(Github/Site)' type="url" name="link1">
 										</div>
 										<div class="col-md-12 col-sm-12">	
 											<label> Resumo </label>
-											<textarea class="form-control" placeholder='Breve Resumo sobre o projeto'>  </textarea>
+											<textarea form='Curriculo' class="form-control" placeholder='Breve Resumo sobre o projeto' name="resumo1">  </textarea>
 										</div>
 									</div>
 								</div>
@@ -228,12 +248,12 @@
 											<hr width="100%;">
 										</div>
 										<div class="col-md-6  col-sm-12 side_left">
-											<label> Tecnologia </label>
-											<input placeholder="Inglês" class="form-control" type="text" name="">
+											<label> Habilidade </label>
+											<input placeholder="Inglês" class="form-control" type="text" name="habilidade1">
 										</div>
 										<div class="col-md-6 col-sm-12 side_left">
 											<label> Nível </label>
-											<input placeholder="Avançado" class="form-control" type="text" name="">
+											<input placeholder="Avançado" class="form-control" type="text" name="nivel1">
 										</div>
 									</div>
 								</div>
@@ -243,6 +263,35 @@
 									</div>	
 									<div class="col-md-6 col-sm-12 button-add">
 										<button onclick='del_habilidades()' type='button' class="btn btn-form btn-outline-danger"> Excluir Ultima Habilidade </button>
+									</div>
+								</div>					
+							</div>
+						</div>
+					</div>
+					<div id='t6' class="col-md-6 offset-md-3 col-config col-inside"> 
+						<div class="conteiner">
+							<div class="row">
+								
+								<h3> AREA DE INTERESSE </h3>
+								<div id='area' class="tamanho">
+									<div class="tamanho" id='area1'>
+										<div class="col-md-12 side_left">
+											<hr width="100%;">
+										</div>
+										<div class="col-md-3 col-sm-12 side_left">
+											<label> Area de Interesse </label>
+										</div>
+										<div class="col-md-9 col-sm-12 side_left">
+											<input placeholder="Desenvolvimento Web" class="form-control" type="text" name="area1">
+										</div>
+									</div>
+								</div>
+								<div class="tamanho">
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='add_area()' type='button' class="btn btn-form btn-outline-dark"> Adicionar Area de Interesse </button>
+									</div>	
+									<div class="col-md-6 col-sm-12 button-add">
+										<button onclick='del_area()' type='button' class="btn btn-form btn-outline-danger"> Excluir Area de Interesse </button>
 									</div>
 								</div>					
 							</div>

@@ -3,16 +3,20 @@ from flask import (Blueprint, redirect, render_template,
 from json import loads
 from app.controllers.estilos import Padrao
 from app.controllers.create import CVWritter
+from app.controllers import classifier
+import os
 
 bp_curriculo = Blueprint('API', __name__)
 bp_front = Blueprint('CV', __name__)
 path = 'app/static/Files'
 filename = None
 
+@bp_front.route('/home/<pronto>', methods=['GET', 'POST'])
 @bp_front.route('/home', methods=['GET', 'POST'])
 @bp_front.route('/', methods=['GET', 'POST'])
-def home():
-	return render_template('index.html')
+def home(pronto = None):
+	global filename
+	return render_template('index.html', pronto=pronto, filename=filename)
 
 @bp_front.route('/temas', methods=['GET', 'POST'])
 def temas():
@@ -21,8 +25,10 @@ def temas():
 
 @bp_curriculo.route('/create', methods=['GET', 'POST'])
 def create():
+	norepeatKey = ['nome', 'telefone', 'email', 'Cidade', 'Git', 'Linkedin']
+	keys = [key for key in request.form.keys() if key not in norepeatKey]
+	data = classifier.gerar_dic(request.form, keys)
 	try:
-		data = loads(request.json)
 		global path
 		global filename
 
@@ -34,7 +40,7 @@ def create():
 		filename = file.split('/')[-1]
 
 	except Exception as e:
-		pass
+		print(e)
 
 	return redirect(url_for('CV.temas'))
 
@@ -46,11 +52,8 @@ def theme(theme):
 		curriculo.aplicar()
 		filename = curriculo.save()
 	
-	return redirect(f'/download/{filename}')
+	return redirect(url_for('CV.home', pronto=1))
 
-@bp_curriculo.route('/download/<name>', methods=['GET', 'POST'])
-def download(name):
-	return render_template('download.html', 
-							path_ = path,
-							file = filename,
-							url_voltar = '')
+
+
+
