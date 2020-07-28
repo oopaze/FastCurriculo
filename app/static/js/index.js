@@ -14,9 +14,9 @@ var a = 1
 var a_tamanho = 0
 
 function add_formacao(){
-	
+
 	f += 1
-	var formacao = ` 					
+	var formacao = `
 									<div class="tamanho" id='formacao`+f+`'>
 										<div class="col-md-12 side_left">
 											<hr width="100%;">
@@ -198,8 +198,6 @@ function del_area(){
 		a -= 1;
 	}
 }
-
-
 
 function select_text(text){
 	element = document.getElementById('navbarDropdown');
