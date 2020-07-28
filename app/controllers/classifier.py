@@ -1,5 +1,6 @@
 from app.models import form
 
+
 def curriculo_count_keys(no_repeat):
 	repeat = [0, 0, 0, 0, 0]
 	for key in no_repeat:

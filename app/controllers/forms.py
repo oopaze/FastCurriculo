@@ -53,7 +53,3 @@ def meuCV():
 	return fields(pessoais_, formacao_, emprego_, projetos_, habilidades_, areaInteresse_)
 
 jsonfields = json.dumps(meuCV(), ensure_ascii=False)
-
-import requests as r
-
-r.post('http://localhost:5000/create', json=jsonfields)

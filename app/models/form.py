@@ -20,7 +20,7 @@ class habilidades:
 		self.nivel = nivel
 
 class projetos:
-	def __init__(self, nome, tecnologias, resumo, link):
+	def __init__(self, nome, tecnologias, link, resumo):
 		self.nome = nome
 		self.tecnologias = tecnologias
 		self.resumo = resumo
