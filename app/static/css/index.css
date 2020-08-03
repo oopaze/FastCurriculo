@@ -37,7 +37,7 @@ footer p{
 
 .tamanho button{
 	min-width: 220px;
-	margin: 0 20px;
+	margin: 0;
 }
 
 .col-md-4{
@@ -48,7 +48,7 @@ footer p{
 	height: 30px;
 }
 
-.btn-form{
+.btn-form{ 
 	width: 100%;
 }
 
@@ -67,7 +67,6 @@ footer p{
 }
 
 .button-add{
-	flex: left;
 	padding-top: 10px;
 }
 
